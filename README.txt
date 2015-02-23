@@ -67,9 +67,9 @@ If you're moving your site from one server to another and changing the URL of yo
 
 More information on moving WordPress can be found [here](http://codex.wordpress.org/Moving_WordPress).
 
-= I get a white screen when using this plugin? =
+= I get a white screen when running a search/replace? =
 
-This is likely an issue with your PHP memory limit. Try temporarily increasing it by defining the memory limit in your `wp-config.php` file as shown [here](http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP). Alternatively, if you were searching across multiple tables, try searching on fewer tables to load less into memory.
+This means that you don't have enough memory allocated to PHP. No changes would have been made at this point, and it's easy to increase the PHP memory limit in your `wp-config.php` file as shown [here](http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP). Alternatively, if you were searching across multiple tables, try going back and searching on fewer tables to load less into memory.
 
 == Screenshots ==
 
