@@ -59,17 +59,17 @@ When running this plugin on a WordPress Multisite installation, it will only be 
 
 If you're moving your site from one server to another and changing the URL of your WordPress installation, the approach below allows you to do so easily without affecting the old site:
 
-1. Backup the database on your current site.
-2. Install the database on your new host.
-3. On the new host, define the new site URL in the `wp-config.php` file, as shown [here](http://codex.wordpress.org/Changing_The_Site_URL#Edit_wp-config.php).
-4. Log in at your new admin URL and run Better Search Replace on the old site URL for the new site URL.
-5. Delete the site_url constant you added to `wp-config.php`. You may also need to regenerate your `.htaccess` by going to Settings -> Permalinks and saving the settings.
+1. Backup the database on your current site
+2. Install the database on your new host
+3. On the new host, define the new site URL in the `wp-config.php` file, as shown [here](http://codex.wordpress.org/Changing_The_Site_URL#Edit_wp-config.php)
+4. Log in at your new admin URL and run Better Search Replace on the old site URL for the new site URL
+5. Delete the site_url constant you added to `wp-config.php`. You may also need to regenerate your .htaccess by going to Settings -> Permalinks and saving the settings.
 
 More information on moving WordPress can be found [here](http://codex.wordpress.org/Moving_WordPress).
 
 = I get a white screen when using this plugin? =
 
-This is likely an issue with your PHP memory limit. Try temporarily increasing it by defining the memory limit in your `wp-config.php` file as shown [here](http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP).
+This is likely an issue with your PHP memory limit. Try temporarily increasing it by defining the memory limit in your `wp-config.php` file as shown [here](http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP). Alternatively, if you were searching across multiple tables, try searching on fewer tables to load less into memory.
 
 == Screenshots ==
 
