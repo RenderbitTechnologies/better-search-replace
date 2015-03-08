@@ -2,7 +2,7 @@
 Contributors: ExpandedFronts
 Tags: search replace, update urls, database, search replace database, update database urls, update live url
 Requires at least: 3.0.1
-Tested up to: 4.1.1
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -20,6 +20,15 @@ When moving your WordPress site to a new domain or server, you will likely run i
 * WordPress Multisite support
 
 The search/replace functionality is heavily based on interconnect/it's great and open-source Search Replace DB script, modified to use WordPress native database functions to ensure compatibility.
+
+** Supported Languages **
+
+* English
+* Spanish
+
+** Want to contribute? **
+
+Feel free to open an issue or submit a pull request on [GitHub](https://github.com/ExpandedFronts/Better-Search-Replace).
 
 == Installation ==
 
@@ -67,9 +76,9 @@ If you're moving your site from one server to another and changing the URL of yo
 
 More information on moving WordPress can be found [here](http://codex.wordpress.org/Moving_WordPress).
 
-= I get a white screen when running a search/replace? =
+= I get a white screen when using this plugin? =
 
-This means that you don't have enough memory allocated to PHP. No changes would have been made at this point, and it's easy to increase the PHP memory limit in your `wp-config.php` file as shown [here](http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP). Alternatively, if you were searching across multiple tables, try going back and searching on fewer tables to load less into memory.
+This is likely an issue with your PHP memory limit. Try temporarily increasing it by defining the memory limit in your `wp-config.php` file as shown [here](http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP). Alternatively, if you were searching across multiple tables, try searching on fewer tables to load less into memory.
 
 == Screenshots ==
 
