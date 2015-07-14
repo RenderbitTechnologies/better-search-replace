@@ -57,7 +57,7 @@ class Better_Search_Replace_Admin {
 	 */
 	public function enqueue_scripts( $hook ) {
 		if ( $hook === 'tools_page_better-search-replace' ) {
-			wp_enqueue_style( 'better-search-replace', BSR_URL . 'assets/css/better-search-replace.css', array(), '2015', 'all' );
+			wp_enqueue_style( 'better-search-replace', BSR_URL . 'assets/css/better-search-replace.css', array(), $this->version, 'all' );
 			wp_enqueue_style( 'thickbox' );
 			wp_enqueue_script( 'thickbox' );
 		}
@@ -69,7 +69,8 @@ class Better_Search_Replace_Admin {
 	 * @access public
 	 */
 	public function bsr_menu_pages() {
-		add_submenu_page( 'tools.php', __( 'Better Search Replace', 'better-search-replace' ), __( 'Better Search Replace', 'better-search-replace' ), 'manage_options', 'better-search-replace', array( $this, 'bsr_menu_pages_callback' ) );
+		$cap = apply_filters( 'bsr_capability', 'install_plugins' );
+		add_submenu_page( 'tools.php', __( 'Better Search Replace', 'better-search-replace' ), __( 'Better Search Replace', 'better-search-replace' ), $cap, 'better-search-replace', array( $this, 'bsr_menu_pages_callback' ) );
 	}
 
 	/**
@@ -85,11 +86,12 @@ class Better_Search_Replace_Admin {
 	 * @access public
 	 */
 	public function process_search_replace() {
+
 		// Only process form data if properly nonced.
 		if ( ! empty( $_POST ) && check_admin_referer( 'process_search_replace', 'bsr_nonce' ) ) {
 
 			// Don't run if there isn't a search string.
-			if ( !isset( $_POST['search_for'] ) || $_POST['search_for'] == '' ) {
+			if ( ! isset( $_POST['search_for'] ) || $_POST['search_for'] == '' ) {
 				wp_redirect( get_admin_url() . 'tools.php?page=better-search-replace&error=no_search_str' );
 				exit();
 			}
@@ -121,6 +123,7 @@ class Better_Search_Replace_Admin {
 		} else {
 			wp_die( 'Cheatin&#8217; uh?', 'better-search-replace' );
 		}
+
 	}
 
 	/**
@@ -128,8 +131,11 @@ class Better_Search_Replace_Admin {
 	 * @access public
 	 */
 	public static function render_result() {
+
 		if ( isset( $_GET['error'] ) ) {
+
 			echo '<div class="error"><p>';
+
 			switch ( $_GET['error'] ) {
 				case 'no_search_str':
 					_e( 'No search string was defined, please enter a URL or string to search for.', 'better-search-replace' );
@@ -137,9 +143,14 @@ class Better_Search_Replace_Admin {
 				case 'no_tables':
 					_e( 'Please select the tables that you want to update.', 'better-search-replace' );
 					break;
+				default:
+					_e( 'An unknown error occurred. Please contact support.', 'better-search-replace' );
 			}
+
 			echo '</p></div>';
+
 		} elseif ( isset( $_GET['result'] ) && get_transient( 'bsr_results' ) ) {
+
 			$result = get_transient( 'bsr_results' );
 			echo '<div class="updated">';
 
@@ -160,6 +171,7 @@ class Better_Search_Replace_Admin {
 			}
 
 			echo $msg . '</div>';
+
 		} else {
 			// There is nothing to do here.
 		}
@@ -190,22 +202,22 @@ class Better_Search_Replace_Admin {
 	 * @access public
 	 */
 	public static function load_tables() {
-		
+
 		// Get the tables and their sizes.
 		$tables = Better_Search_Replace_DB::get_tables();
 		$sizes 	= Better_Search_Replace_DB::get_sizes();
 
 		echo '<select id="select_tables" name="select_tables[]" multiple="multiple" style="width:25em;">';
-		
+
 		foreach ( $tables as $table ) {
 
 			// Try to get the size for this specific table.
 			$table_size = isset( $sizes[$table] ) ? $sizes[$table] : '';
 
 			if ( isset( $_GET['result'] ) && get_transient( 'bsr_results' ) ) {
-				
+
 				$result = get_transient( 'bsr_results' );
-				
+
 				if ( isset( $result['table_reports'][$table] ) ) {
 					echo "<option value='$table' selected>$table $table_size</option>";
 				} else {
@@ -215,9 +227,9 @@ class Better_Search_Replace_Admin {
 			} else {
 				echo "<option value='$table'>$table $table_size</option>";
 			}
-			
+
 		}
-		
+
 		echo '</select>';
 	}
 
@@ -237,7 +249,7 @@ class Better_Search_Replace_Admin {
 			<div class="container" style="padding:10px;">
 			<table id="bsr-results-table" class="widefat">
 				<thead>
-					<tr><th class="bsr-first">Table</th><th class="bsr-second">Changes Found</th><th class="bsr-third">Rows Updated</th><th class="bsr-fourth">Time</th></tr>
+					<tr><th class="bsr-first"><?php _e( 'Table', 'better-search-replace' ); ?></th><th class="bsr-second"><?php _e( 'Changes Found', 'better-search-replace' ); ?></th><th class="bsr-third"><?php _e( 'Rows Updated', 'better-search-replace' ); ?></th><th class="bsr-fourth"><?php _e( 'Time', 'better-search-replace' ); ?></th></tr>
 				</thead>
 				<tbody>
 				<?php
@@ -257,9 +269,16 @@ class Better_Search_Replace_Admin {
 				?>
 				</tbody>
 			</table>
+
+			<p style="text-align:center;"><strong><?php _e( 'Want even more details, easy database migrations, and saved search/replace profiles?', 'better-search-replace' ); ?><br>
+			<a href="https://expandedfronts.com/downloads/better-search-replace-pro/" target="_blank"><?php _e( 'Learn more about the pro version', 'better-search-replace' ); ?></a></strong></p>
+
 			</div>
 
 			<?php
+
+		} else {
+			_e( 'There was an error retrieving the results. Please try again.', 'better-search-replace' );
 		}
 	}
 
