@@ -27,6 +27,8 @@ When moving your WordPress site to a new domain or server, you will likely run i
 * Save or load custom profiles for quickly repeating a search/replace in the future
 * Support and updates for 1 year
 
+[Click here to learn more about Better Search Replace Pro](https://expandedfronts.com/downloads/better-search-replace-pro/)
+
 The search/replace functionality is heavily based on interconnect/it's great and open-source Search Replace DB script, modified to use WordPress native database functions to ensure compatibility.
 
 **Supported Languages**
