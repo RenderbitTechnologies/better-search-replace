@@ -26,15 +26,19 @@ if ( 'bsr_settings' === $active_tab ) {
 
 <div class="wrap">
 
-	<h2><?php _e( 'Better Search Replace', 'better-search-replace' ); ?></h2>
-	<?php Better_Search_Replace_Admin::render_result(); ?>
+	<h1 id="bsr-title"><?php _e( 'Better Search Replace', 'better-search-replace' ); ?></h1>
+
+	<div id="bsr-error-wrap"></div>
+
+	<?php BSR_Admin::render_result(); ?>
 
 	<h2 class="nav-tab-wrapper">
 	    <a href="?page=better-search-replace&tab=bsr_search_replace" class="nav-tab <?php echo $active_tab == 'bsr_search_replace' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Search/Replace', 'better-search-replace' ); ?></a>
 	    <a href="?page=better-search-replace&tab=bsr_settings" class="nav-tab <?php echo $active_tab == 'bsr_settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'better-search-replace' ); ?></a>
+	    <a href="?page=better-search-replace&tab=bsr_help" class="nav-tab <?php echo $active_tab == 'bsr_help' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Help', 'better-search-replace' ); ?></a>
 	</h2>
 
-	<form action="<?php echo $action; ?>" method="POST">
+	<form class="bsr-action-form" action="<?php echo $action; ?>" method="POST">
 
 	<?php
 		// Include the correct tab template.
@@ -42,7 +46,7 @@ if ( 'bsr_settings' === $active_tab ) {
 		if ( file_exists( BSR_PATH . 'templates/' . $bsr_template ) ) {
 			include BSR_PATH . 'templates/' . $bsr_template;
 		} else {
-			include BSR_PATH . 'templates/' . 'bsr-search-replace.php';
+			include BSR_PATH . 'templates/bsr-search-replace.php';
 		}
 	?>
 
