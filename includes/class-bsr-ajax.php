@@ -130,6 +130,8 @@ class BSR_AJAX {
 			'completed_pages' 	=> isset( $args['completed_pages'] ) ? absint( $args['completed_pages'] ) : 0,
 		);
 
+		$args['total_pages'] = $db->get_total_pages( $args['select_tables'] );
+
 		// Any operations that should only be performed at the beginning.
 		if ( $step === 0 && $page === 0 ) {
 			// Clear the results of the last run.
