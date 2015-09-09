@@ -2,7 +2,7 @@
 Contributors: ExpandedFronts
 Tags: search replace, update urls, database, search replace database, update database urls, update live url
 Requires at least: 3.0.1
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -11,7 +11,7 @@ A simple plugin for updating URLs or other text in a database.
 
 == Description ==
 
-When moving your WordPress site to a new domain or server, you will likely run into a need to run a search/replace on the database for everything to work correctly. Fortunately, there are several plugins available for this task, however, all have a different approach to a few key features. This plugin consolidates the best features from these plugins, incorporating the following features in a simple, ad-free plugin:
+When moving your WordPress site to a new domain or server, you will likely run into a need to run a search/replace on the database for everything to work correctly. Fortunately, there are several plugins available for this task, however, all have a different approach to a few key features. This plugin consolidates the best features from these plugins, incorporating the following features in one simple plugin:
 
 * Serialization support for all tables
 * The ability to select specific tables
@@ -19,11 +19,23 @@ When moving your WordPress site to a new domain or server, you will likely run i
 * No server requirements aside from a running installation of WordPress
 * WordPress Multisite support
 
+**Premium features available in the Pro version:**
+
+* View exactly what changed during a search/replace
+* Backup and import the database while running a search/replace
+* Priority email support from the developer of the plugin
+* Save or load custom profiles for quickly repeating a search/replace in the future
+* Support and updates for 1 year
+
+[Learn more about Better Search Replace Pro](https://expandedfronts.com/downloads/better-search-replace-pro/)
+
 The search/replace functionality is heavily based on interconnect/it's great and open-source Search Replace DB script, modified to use WordPress native database functions to ensure compatibility.
 
 **Supported Languages**
 
 * English
+* French
+* German
 * Spanish
 
 **Want to contribute?**
@@ -76,10 +88,6 @@ If you're moving your site from one server to another and changing the URL of yo
 
 More information on moving WordPress can be found [here](http://codex.wordpress.org/Moving_WordPress).
 
-= I get a white screen when using this plugin? =
-
-This is likely an issue with your PHP memory limit. Try temporarily increasing it by defining the memory limit in your `wp-config.php` file as shown [here](http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP). Alternatively, if you were searching across multiple tables, try searching on fewer tables to load less into memory.
-
 == Screenshots ==
 
 1. The Better Search Replace page added to the "Tools" menu
@@ -87,8 +95,36 @@ This is likely an issue with your PHP memory limit. Try temporarily increasing i
 
 == Changelog ==
 
+= 1.2.2 =
+* Fixed AJAX conflict with WooCommerce
+* Fixed a few issues with translations
+* Tweaked "System Info" to use get_locale() instead of WP_LANG constant
+* Updated German translation (props @Linus Ziegenhagen)
+
+= 1.2.1 =
+* Fixed minor issue with display of progress bar
+* Updated translation file
+
+= 1.2 =
+* Switched to AJAX bulk processing for search/replaces
+* Decreased minimum "Max Page Size" to 1000
+* Added "Help" tab with system info for easier troubleshooting
+
+= 1.1.1 =
+* Added ability to change max page size
+* Decreased default page size to prevent white screen issue on some environments
+
+= 1.1 =
+* Added ability to change capability required to use plugin
+* Small bugfixes and translation fixes
+
+= 1.0.6 =
+* Added table sizes to the database table listing
+* Added French translation (props @Jean Philippe)
+
 = 1.0.5 =
 * Added support for case-insensitive searches
+* Added German translation (props @Linus Ziegenhagen)
 
 = 1.0.4 =
 * Potential security fixes
