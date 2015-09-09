@@ -1,6 +1,6 @@
 === Better Search Replace ===
 Contributors: ExpandedFronts, mattshaw
-Tags: search replace, update urls, database, search replace database, update database urls, update live url
+Tags: search replace, search and replace, update urls, database, search replace database, update database urls, update live url, better search replace
 Requires at least: 3.0.1
 Tested up to: 4.3
 Stable tag: trunk
