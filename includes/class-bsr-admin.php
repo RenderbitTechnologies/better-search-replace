@@ -265,7 +265,7 @@ class BSR_Admin {
 					?>
 						<table id="bsr-results-table" class="widefat">
 							<thead>
-								<tr><th class="bsr-first">Table</th><th class="bsr-second">Changes Found</th><th class="bsr-third">Rows Updated</th><th class="bsr-fourth">Time</th></tr>
+								<tr><th class="bsr-first"><?php _e( 'Table', 'better-search-replace' ); ?></th><th class="bsr-second"><?php _e( 'Changes Found', 'better-search-replace' ); ?></th><th class="bsr-third"><?php _e( 'Rows Updated', 'better-search-replace' ); ?></th><th class="bsr-fourth"><?php _e( 'Time', 'better-search-replace' ); ?></th></tr>
 							</thead>
 							<tbody>
 							<?php
@@ -276,7 +276,7 @@ class BSR_Admin {
 										$report['change'] = '<strong>' . $report['change'] . '</strong>';
 
 										if ( is_array( $report['changes'] ) ) {
-											$report['change'] .= ' <a href="?action=bsr_view_details&changes=true&table=' . $table_name . '">[View]</a>';
+											$report['change'] .= ' <a href="?action=bsr_view_details&changes=true&table=' . $table_name . '">[' . __( 'View', 'better-search-replace' ) . ']</a>';
 										}
 
 									}
@@ -289,7 +289,7 @@ class BSR_Admin {
 										$table_name = substr( $table_name, 7 );
 									}
 
-									echo '<tr><td class="bsr-first">' . $table_name . '</td><td class="bsr-second">' . $report['change'] . '</td><td class="bsr-third">' . $report['updates'] . '</td><td class="bsr-fourth">' . round( $time, 3 ) . ' seconds</td></tr>';
+									echo '<tr><td class="bsr-first">' . $table_name . '</td><td class="bsr-second">' . $report['change'] . '</td><td class="bsr-third">' . $report['updates'] . '</td><td class="bsr-fourth">' . round( $time, 3 ) . __( ' seconds', 'better-search-replace' ) . '</td></tr>';
 								}
 							?>
 							</tbody>
