@@ -1,5 +1,5 @@
 === Better Search Replace ===
-Contributors: ExpandedFronts
+Contributors: ExpandedFronts, mattshaw
 Tags: search replace, update urls, database, search replace database, update database urls, update live url
 Requires at least: 3.0.1
 Tested up to: 4.3
