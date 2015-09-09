@@ -21,8 +21,8 @@ class BSR_AJAX {
 	 * @access public
 	 */
 	public function init() {
-		add_action( 'init', array( $this, 'define_ajax' ), -1 );
-		add_action( 'init', array( $this, 'do_bsr_ajax' ), 0 );
+		add_action( 'init', array( $this, 'define_ajax' ), 1 );
+		add_action( 'init', array( $this, 'do_bsr_ajax' ), 2 );
 		$this->add_ajax_actions();
 	}
 
@@ -128,7 +128,7 @@ class BSR_AJAX {
 			'completed_pages' 	=> isset( $args['completed_pages'] ) ? absint( $args['completed_pages'] ) : 0,
 		);
 
-		$args['total_pages'] = isset( $args['total_pages'] ) ? $args['total_pages'] : $db->get_total_pages( $args['select_tables'] );
+		$args['total_pages'] = isset( $args['total_pages'] ) ? absint( $args['total_pages'] ) : $db->get_total_pages( $args['select_tables'] );
 
 		// Any operations that should only be performed at the beginning.
 		if ( $step === 0 && $page === 0 ) {
