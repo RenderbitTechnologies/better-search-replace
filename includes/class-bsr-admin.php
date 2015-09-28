@@ -202,8 +202,8 @@ class BSR_Admin {
 			$bsr_styles 	= BSR_URL . 'assets/css/better-search-replace.css?v=1.1';
 
 			?>
-			<link href="<?php echo $styles_url; ?>" rel="stylesheet" type="text/css">
-			<link href="<?php echo $bsr_styles; ?>" rel="stylesheet" type="text/css">
+			<link href="<?php echo esc_url( $styles_url ); ?>" rel="stylesheet" type="text/css">
+			<link href="<?php echo esc_url( $bsr_styles ); ?>" rel="stylesheet" type="text/css">
 
 			<div class="container" style="padding:10px;">
 
@@ -231,7 +231,7 @@ class BSR_Admin {
 				</table>
 
 				<p style="text-align:center;"><strong><?php _e( 'Want even more details, easy database migrations, and saved search/replace profiles?', 'better-search-replace' ); ?><br>
-				<a href="https://expandedfronts.com/downloads/better-search-replace-pro/" target="_blank"><?php _e( 'Learn more about the pro version', 'better-search-replace' ); ?></a></strong></p>
+				<a href="https://expandedfronts.com/products/better-search-replace-pro/" target="_blank"><?php _e( 'Learn more about the pro version', 'better-search-replace' ); ?></a></strong></p>
 
 			</div>
 			<?php
@@ -276,7 +276,7 @@ class BSR_Admin {
 		if ( $file == $plugin ) {
 			return array_merge(
 				$links,
-				array( '<a href="https://expandedfronts.com/downloads/better-search-replace-pro/">' . __( 'Upgrade to Pro', 'better-search-replace' ) . '</a>' )
+				array( '<a href="https://expandedfronts.com/products/better-search-replace-pro/">' . __( 'Upgrade to Pro', 'better-search-replace' ) . '</a>' )
 			);
 		}
 
